@@ -1,0 +1,21 @@
+{
+	"name": "majkl578/datetime-as-service",
+	"type": "nette-addon",
+	"keywords": ["nette", "date", "time", "addon"],
+	"authors": [
+		{
+			"name": "Michael Moravec"
+		}
+	],
+	"description": "DateTime in a service, providing consistent current time across the application.",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.3",
+		"nette/nette": "2.0.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Majkl578\\DateTimeAsService": "lib/"
+		}
+	}
+}
