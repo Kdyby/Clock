@@ -7,7 +7,7 @@
 			"name": "Michael Moravec"
 		}
 	],
-	"description": "DateTime in a service, providing consistent current time across the application.",
+	"description": "DateTime provider, providing consistent current date, time, datetime and timezone across the request.",
 	"license": "MIT",
 	"require": {
 		"php": ">=5.3",
@@ -15,7 +15,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Majkl578\\DateTimeAsService": "lib/"
+			"Majkl578\\DateTimeProvider": "lib/"
 		}
 	}
 }
