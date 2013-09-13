@@ -62,6 +62,10 @@ class ExtensionTest extends Tester\TestCase
 
 		Assert::true($provider instanceof Kdyby\Clock\Providers\RequestTimeProvider);
 		Assert::same((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
+
+		$_SERVER['REQUEST_TIME'] = 987654321;
+
+		Assert::notSame((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 	}
 
 }
