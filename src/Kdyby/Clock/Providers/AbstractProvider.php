@@ -1,17 +1,40 @@
 <?php
 
-namespace Majkl578\DateTimeProvider;
+/**
+ * This file is part of the Kdyby (http://www.kdyby.org)
+ *
+ * Copyright (c) 2008 Filip Procházka (filip@prochazka.su)
+ *
+ * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
+ */
 
+namespace Kdyby\Clock\Providers;
+
+use Kdyby\Clock\IClock;
+use Kdyby\Clock\IDateTimeProvider;
 use Nette\Object;
+
+
 
 /**
  * Base implementation for DateTime-based providers.
  * @author Michael Moravec
  */
-class AbstractDateTimeProvider extends Object implements IDateTimeProvider
+abstract class AbstractProvider extends Object implements IDateTimeProvider
 {
-	/** @var \DateTime */
+	/**
+	 * @var \DateTime
+	 */
 	protected $prototype;
+
+
+
+	public function __construct(\DateTime $prototype)
+	{
+		$this->prototype = $prototype;
+	}
+
+
 
 	/**
 	 * {@inheritdoc}
@@ -24,6 +47,8 @@ class AbstractDateTimeProvider extends Object implements IDateTimeProvider
 		return $date;
 	}
 
+
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -32,6 +57,8 @@ class AbstractDateTimeProvider extends Object implements IDateTimeProvider
 		return new \DateInterval(sprintf('PT%dH%dM%dS', $this->prototype->format('G'), $this->prototype->format('i'), $this->prototype->format('s')));
 	}
 
+
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -39,6 +66,8 @@ class AbstractDateTimeProvider extends Object implements IDateTimeProvider
 	{
 		return clone $this->prototype;
 	}
+
+
 
 	/**
 	 * {@inheritdoc}

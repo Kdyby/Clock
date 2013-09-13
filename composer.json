@@ -1,21 +1,35 @@
 {
-	"name": "majkl578/datetime-as-service",
-	"type": "nette-addon",
-	"keywords": ["nette", "date", "time", "addon"],
+	"name": "kdyby/clock",
+	"type": "library",
+	"description": "Time provider, providing consistent current date, time, datetime and timezone across the request.",
+	"keywords": ["nette", "kdyby", "date", "time"],
+	"homepage": "http://kdyby.org",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
 	"authors": [
 		{
 			"name": "Michael Moravec"
+		},
+		{
+			"name": "Filip Procházka",
+			"homepage": "http://filip-prochazka.com"
 		}
 	],
-	"description": "DateTime provider, providing consistent current date, time, datetime and timezone across the request.",
-	"license": "MIT",
+	"support": {
+		"email": "filip@prochazka.su",
+		"issues": "https://github.com/kdyby/clock/issues"
+	},
 	"require": {
-		"php": ">=5.3",
-		"nette/nette": "2.0.*"
+		"nette/nette": "@dev"
+	},
+	"require-dev": {
+		"nette/tester": "@dev"
 	},
 	"autoload": {
 		"psr-0": {
-			"Majkl578\\DateTimeProvider": "lib/"
-		}
+			"Kdyby\\Clock\\": "src/"
+		},
+		"classmap": [
+			"src/Kdyby/Clock/exceptions.php"
+		]
 	}
 }
