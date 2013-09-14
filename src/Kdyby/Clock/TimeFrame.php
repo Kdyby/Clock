@@ -94,7 +94,7 @@ abstract class TimeFrame extends Nette\DateTime implements DateTime
 	 * @param DateInterval $interval
 	 * @return TimeFrame
 	 */
-	public function add(DateInterval $interval)
+	public function add($interval)
 	{
 		$dt = new \DateTime((string) $this, $this->getTimezone());
 		return self::determinePrecision($dt->add($interval));
@@ -106,7 +106,7 @@ abstract class TimeFrame extends Nette\DateTime implements DateTime
 	 * @param DateInterval $interval
 	 * @return TimeFrame
 	 */
-	public function sub(DateInterval $interval)
+	public function sub($interval)
 	{
 		$dt = new \DateTime((string) $this, $this->getTimezone());
 		return self::determinePrecision($dt->sub($interval));
@@ -346,13 +346,13 @@ abstract class TimeFrame extends Nette\DateTime implements DateTime
 	/**
 	 * @param string $format
 	 * @param string $time
-	 * @param DateTimeZone $timezone
+	 * @param DateTimeZone $object
 	 * @throws InvalidArgumentException
 	 * @return TimeFrame
 	 */
-	public static function createFromFormat($format, $time, DateTimeZone $timezone = null)
+	public static function createFromFormat($format, $time, $object = NULL)
 	{
-		if (!$datetime = \DateTime::createFromFormat($format, $time, $timezone)) {
+		if (!$datetime = \DateTime::createFromFormat($format, $time, $object)) {
 			throw new InvalidArgumentException("DateTime cannot be created from time '$time' in format '$format'");
 		}
 
