@@ -21,9 +21,17 @@ use Nette;
 class RequestTimeProvider extends AbstractProvider
 {
 
+	/**
+	 * @param string|int|\DateTime $httpRequestTime
+	 */
 	public function __construct($httpRequestTime)
 	{
-		parent::__construct(Nette\DateTime::from($httpRequestTime));
+		if ($httpRequestTime instanceof \DateTime) {
+			parent::__construct($httpRequestTime);
+
+		} else {
+			parent::__construct(new \DateTime(date('Y-m-d H:i:s', $httpRequestTime), new \DateTimeZone(date_default_timezone_get())));
+		}
 	}
 
 }
