@@ -40,8 +40,8 @@ class ClockExtension extends Nette\DI\CompilerExtension
 	);
 
 	public static $providers = array(
-		'standard' => 'Kdyby\Clock\Providers\StandardProvider',
-		'request' => 'Kdyby\Clock\Providers\RequestTimeProvider',
+		'standard' => 'Kdyby\Clock\Providers\CurrentProvider',
+		'request' => 'Kdyby\Clock\Providers\ConstantProvider',
 	);
 
 

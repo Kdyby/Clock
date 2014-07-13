@@ -18,19 +18,19 @@ use Nette;
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class RequestTimeProvider extends AbstractProvider
+class ConstantProvider extends AbstractProvider
 {
 
 	/**
-	 * @param string|int|\DateTime $httpRequestTime
+	 * @param string|int|\DateTime $time
 	 */
-	public function __construct($httpRequestTime)
+	public function __construct($time)
 	{
-		if ($httpRequestTime instanceof \DateTime) {
-			parent::__construct($httpRequestTime);
+		if ($time instanceof \DateTime) {
+			parent::__construct($time);
 
 		} else {
-			parent::__construct(new \DateTime(date('Y-m-d H:i:s', $httpRequestTime), new \DateTimeZone(date_default_timezone_get())));
+			parent::__construct(new \DateTime(date('Y-m-d H:i:s', $time), new \DateTimeZone(date_default_timezone_get())));
 		}
 	}
 
