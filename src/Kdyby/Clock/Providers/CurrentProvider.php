@@ -15,7 +15,7 @@ namespace Kdyby\Clock\Providers;
 /**
  * @author Michael Moravec
  */
-class StandardProvider extends AbstractProvider
+class CurrentProvider extends AbstractProvider
 {
 
 	public function __construct()

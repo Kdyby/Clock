@@ -49,7 +49,7 @@ class ExtensionTest extends Tester\TestCase
 		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\StandardProvider);
+		Assert::true($provider instanceof Kdyby\Clock\Providers\CurrentProvider);
 	}
 
 
@@ -60,7 +60,7 @@ class ExtensionTest extends Tester\TestCase
 		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\RequestTimeProvider);
+		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
 		Assert::same((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 
 		$_SERVER['REQUEST_TIME'] = 987654321;
