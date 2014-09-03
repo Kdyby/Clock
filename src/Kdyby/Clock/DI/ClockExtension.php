@@ -40,8 +40,8 @@ class ClockExtension extends Nette\DI\CompilerExtension
 	);
 
 	public static $providers = array(
-		'standard' => 'Kdyby\Clock\Providers\StandardProvider',
-		'request' => 'Kdyby\Clock\Providers\RequestTimeProvider',
+		'standard' => 'Kdyby\Clock\Providers\ConstantProvider',
+		'request' => 'Kdyby\Clock\Providers\ConstantProvider',
 	);
 
 
@@ -57,11 +57,11 @@ class ClockExtension extends Nette\DI\CompilerExtension
 		}
 
 		if (!class_exists($providerImpl)) {
-			throw new UnexpectedValueException("DateTime provider implementation class '$providerImpl' does not exist or could not be loaded.");
+			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' does not exist or could not be loaded.");
 		}
 
 		if (!Nette\Reflection\ClassType::from($providerImpl)->implementsInterface('Kdyby\Clock\IDateTimeProvider')) {
-			throw new UnexpectedValueException("DateTime provider implementation class '$providerImpl' must implement interface Kdyby\\Clock\\IDateTimeProvider.");
+			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' must implement interface Kdyby\\Clock\\IDateTimeProvider.");
 		}
 
 		$providerDef = $builder->addDefinition($this->prefix('dateTimeProvider'))
@@ -71,6 +71,9 @@ class ClockExtension extends Nette\DI\CompilerExtension
 		if ($config['provider'] === 'request') {
 			$providerDef->setArguments(array(new Code\PhpLiteral('isset($_SERVER["REQUEST_TIME"]) ? $_SERVER["REQUEST_TIME"] : time()')));
 			$providerDef->addTag('run');
+
+		} elseif ($config['provider'] === 'standard') {
+			$providerDef->setArguments(array(new Code\PhpLiteral('time()')));
 		}
 	}
 
