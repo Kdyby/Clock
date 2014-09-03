@@ -49,7 +49,7 @@ class ClockExtension extends Nette\DI\CompilerExtension
 			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' does not exist or could not be loaded.");
 		}
 
-		if (!Nette\Reflection\ClassType::from($providerImpl)->implementsInterface('Kdyby\Clock\IDateTimeProvider')) {
+		if (!in_array('Kdyby\Clock\IDateTimeProvider', class_implements($providerImpl), TRUE)) {
 			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' must implement interface Kdyby\\Clock\\IDateTimeProvider.");
 		}
 
