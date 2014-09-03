@@ -19,8 +19,6 @@
 		"issues": "https://github.com/kdyby/clock/issues"
 	},
 	"require": {
-		"nette/di": "2.2.*",
-		"nette/neon": "2.2.*",
 		"nette/utils": "2.2.*"
 	},
 	"require-dev": {
@@ -43,7 +41,6 @@
 		"nette/safe-stream": "2.2.*",
 		"nette/security": "2.2.*",
 		"nette/tokenizer": "2.2.*",
-		"nette/utils": "2.2.*",
 		"latte/latte": "2.2.*",
 		"tracy/tracy": "2.2.*",
 
