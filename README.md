@@ -1,4 +1,4 @@
-Kdyby/Clock [![Build Status](https://secure.travis-ci.org/Kdyby/Clock.png?branch=master)](http://travis-ci.org/Kdyby/Clock)
+Kdyby/Clock [![Build Status](https://secure.travis-ci.org/Kdyby/Clock.png?branch=nette-2.0)](http://travis-ci.org/Kdyby/Clock)
 ===========================
 
 
@@ -16,7 +16,7 @@ Installation
 The best way to install Kdyby/Clock is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/clock:@dev
+$ composer require kdyby/clock:dev-nette-2.0
 ```
 
 

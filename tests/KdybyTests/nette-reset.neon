@@ -1,22 +1,15 @@
-common:
-	php:
-		date.timezone: Europe/Prague
+php:
+	date.timezone: Europe/Prague
 
-	services:
-		cacheStorage:
-			class: Nette\Caching\Storages\MemoryStorage
 
-v22 < common:
-	nette:
-		security:
-			frames: null
-
-		session:
-			autoStart: false
-
-v23 < common:
-	http:
+nette:
+	security:
 		frames: null
 
 	session:
 		autoStart: false
+
+
+services:
+	cacheStorage:
+		class: Nette\Caching\Storages\MemoryStorage
