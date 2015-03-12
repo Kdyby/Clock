@@ -1,15 +1,16 @@
-php:
-	date.timezone: Europe/Prague
+production:
+	php:
+		date.timezone: Europe/Prague
 
 
-nette:
-	security:
-		frames: null
+	nette:
+		security:
+			frames: null
 
-	session:
-		autoStart: false
+		session:
+			autoStart: false
 
 
-services:
-	cacheStorage:
-		class: Nette\Caching\Storages\MemoryStorage
+	services:
+		cacheStorage:
+			class: Nette\Caching\Storages\MemoryStorage

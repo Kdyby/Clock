@@ -1,2 +1,3 @@
-clock:
-	provider: standard
+production:
+	clock:
+		provider: standard
