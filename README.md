@@ -1,4 +1,4 @@
-Kdyby/Clock [![Build Status](https://secure.travis-ci.org/Kdyby/Clock.png?branch=master)](http://travis-ci.org/Kdyby/Clock)
+Kdyby/Clock [![Build Status](https://secure.travis-ci.org/MilanPala/Clock.png?branch=nette-2.0)](http://travis-ci.org/MilanPala/Clock)
 ===========================
 
 
