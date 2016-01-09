@@ -1,5 +1,8 @@
-Kdyby/Clock [![Build Status](https://secure.travis-ci.org/Kdyby/Clock.png?branch=master)](http://travis-ci.org/Kdyby/Clock)
-===========================
+Kdyby/Clock
+===========
+
+[![Build Status](https://secure.travis-ci.org/Kdyby/Clock.png?branch=master)](http://travis-ci.org/Kdyby/Clock)
+[![Join the chat at https://gitter.im/Kdyby/Help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Kdyby/Help)
 
 
 Requirements
