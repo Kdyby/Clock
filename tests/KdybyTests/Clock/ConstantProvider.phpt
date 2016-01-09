@@ -55,6 +55,17 @@ class ConstantProviderTest extends Tester\TestCase
 
 
 
+	public function testImmutableThroughConstructor()
+	{
+		$tp = new ConstantProvider($originalTime = new \DateTime('2013-09-14 03:53:21'));
+		Assert::equal($originalTime, $tp->getDateTime());
+
+		$originalTime->modify('+1 hour');
+		Assert::notEqual($originalTime, $tp->getDateTime());
+	}
+
+
+
 	public function testTimezones()
 	{
 		date_default_timezone_set('Europe/Prague');
