@@ -68,6 +68,17 @@ class ExtensionTest extends Tester\TestCase
 		Assert::notSame((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 	}
 
+
+
+	public function testCurrentProvider()
+	{
+		$container = $this->createContainer('provider.current');
+		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
+		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
+
+		Assert::true($provider instanceof Kdyby\Clock\Providers\CurrentProvider);
+	}
+
 }
 
 \run(new ExtensionTest());
