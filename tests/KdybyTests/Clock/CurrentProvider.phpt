@@ -36,8 +36,8 @@ class CurrentProviderTest extends Tester\TestCase
 		sleep(2);
 
 		Assert::notEqual($datetime, $tp->getDateTime());
-		Assert::notEqual($time, $tp->getTime());
-		Assert::equal($timezone, $tp->getTimezone());
+		Assert::notEqual($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
+		Assert::equal($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
 

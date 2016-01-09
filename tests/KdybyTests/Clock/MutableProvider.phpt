@@ -38,8 +38,8 @@ class MutableProviderTest extends Tester\TestCase
 
 		Assert::equal($datetime, $tp->getDateTime());
 		Assert::equal($date, $tp->getDate());
-		Assert::equal($time, $tp->getTime());
-		Assert::equal($timezone, $tp->getTimezone());
+		Assert::equal($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
+		Assert::equal($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
 
