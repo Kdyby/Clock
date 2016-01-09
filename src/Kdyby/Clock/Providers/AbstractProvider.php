@@ -31,7 +31,7 @@ abstract class AbstractProvider extends Object implements IDateTimeProvider
 
 	public function __construct(\DateTime $prototype)
 	{
-		$this->prototype = $prototype;
+		$this->prototype = clone $prototype;
 	}
 
 
