@@ -16,7 +16,7 @@ Installation
 The best way to install Kdyby/Clock is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/clock:@dev
+$ composer require kdyby/clock
 ```
 
 
