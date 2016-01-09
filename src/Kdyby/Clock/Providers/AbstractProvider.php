@@ -10,7 +10,6 @@
 
 namespace Kdyby\Clock\Providers;
 
-use Kdyby\Clock\IClock;
 use Kdyby\Clock\IDateTimeProvider;
 use Nette\Object;
 
