@@ -17,6 +17,7 @@ use Nette;
 
 /**
  * @author Filip Procházka <filip@prochazka.su>
+ * @author Richard Ejem <richard@ejem.cz>
  */
 class CurrentProvider extends Nette\Object implements Kdyby\Clock\IDateTimeProvider
 {
@@ -47,7 +48,7 @@ class CurrentProvider extends Nette\Object implements Kdyby\Clock\IDateTimeProvi
 	 */
 	public function getDateTime()
 	{
-		return new \DateTime();
+		return new \DateTimeImmutable();
 	}
 
 

@@ -11,7 +11,6 @@
 namespace Kdyby\Clock\Providers;
 
 use Kdyby;
-use Nette;
 
 
 
@@ -21,9 +20,10 @@ use Nette;
 class MutableProvider extends AbstractProvider
 {
 
-	public function changePrototype(\DateTime $prototype)
+	public function changePrototype(\DateTimeImmutable $prototype)
 	{
-		$this->prototype = clone $prototype;
+		$this->prototype = $prototype;
+		$this->date = NULL;
 	}
 
 }

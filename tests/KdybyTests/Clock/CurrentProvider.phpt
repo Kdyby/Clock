@@ -12,7 +12,6 @@ namespace KdybyTests\Clock;
 
 use Kdyby;
 use Kdyby\Clock\Providers\CurrentProvider;
-use Nette;
 use Tester;
 use Tester\Assert;
 
@@ -35,20 +34,10 @@ class CurrentProviderTest extends Tester\TestCase
 
 		sleep(2);
 
+		Assert::type('\DateTimeImmutable', $datetime);
 		Assert::notEqual($datetime, $tp->getDateTime());
 		Assert::notEqual($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
-		Assert::equal($timezone->getName(), $tp->getTimezone()->getName());
-	}
-
-
-
-	public function testImmutableGetters()
-	{
-		$tp = new CurrentProvider();
-
-		$datetime = $tp->getDateTime();
-		$tp->getDateTime()->modify('+1 hour');
-		Assert::equal($datetime, $tp->getDateTime());
+		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
 

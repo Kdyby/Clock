@@ -12,7 +12,6 @@ namespace KdybyTests\Clock;
 
 use Kdyby;
 use Kdyby\Clock\Providers\ConstantProvider;
-use Nette;
 use Tester;
 use Tester\Assert;
 
@@ -36,32 +35,11 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::equal($datetime, $tp->getDateTime());
-		Assert::equal($date, $tp->getDate());
-		Assert::equal($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
-		Assert::equal($timezone->getName(), $tp->getTimezone()->getName());
-	}
-
-
-
-	public function testImmutableGetters()
-	{
-		$tp = new ConstantProvider(1379123601);
-
-		$datetime = $tp->getDateTime();
-		$tp->getDateTime()->modify('+1 hour');
-		Assert::equal($datetime, $tp->getDateTime());
-	}
-
-
-
-	public function testImmutableThroughConstructor()
-	{
-		$tp = new ConstantProvider($originalTime = new \DateTime('2013-09-14 03:53:21'));
-		Assert::equal($originalTime, $tp->getDateTime());
-
-		$originalTime->modify('+1 hour');
-		Assert::notEqual($originalTime, $tp->getDateTime());
+		Assert::type('\DateTimeImmutable', $datetime);
+		Assert::same($datetime, $tp->getDateTime());
+		Assert::same($date, $tp->getDate());
+		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
+		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
 

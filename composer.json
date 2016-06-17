@@ -2,12 +2,24 @@
 	"name": "kdyby/clock",
 	"type": "library",
 	"description": "Time provider, providing consistent current date, time, datetime and timezone across the request.",
-	"keywords": ["nette", "kdyby", "date", "time"],
+	"keywords": [
+		"nette",
+		"kdyby",
+		"date",
+		"time"
+	],
 	"homepage": "http://kdyby.org",
-	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"license": [
+		"BSD-3-Clause",
+		"GPL-2.0",
+		"GPL-3.0"
+	],
 	"authors": [
 		{
 			"name": "Michael Moravec"
+		},
+		{
+			"name": "Richard Ejem"
 		},
 		{
 			"name": "Filip Procházka",
