@@ -8,7 +8,7 @@ Kdyby/Clock
 Requirements
 ------------
 
-Kdyby/Clock requires PHP 5.3.2 or higher.
+Kdyby/Clock requires PHP 5.5 or higher.
 
 - [Nette Framework](https://github.com/nette/nette)
 

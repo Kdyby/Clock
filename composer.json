@@ -10,6 +10,9 @@
 			"name": "Michael Moravec"
 		},
 		{
+			"name": "Richard Ejem"
+		},
+		{
 			"name": "Filip Procházka",
 			"homepage": "http://filip-prochazka.com"
 		}
@@ -19,7 +22,7 @@
 		"issues": "https://github.com/kdyby/clock/issues"
 	},
 	"require": {
-		"php": ">=5.4",
+		"php": ">=5.5",
 		"kdyby/strict-objects": "^1.0"
 	},
 	"require-dev": {

@@ -18,7 +18,7 @@ namespace Kdyby\Clock;
 interface IDateTimeProvider
 {
 	/**
-	 * @return \DateTime|\DateTimeInterface
+	 * @return \DateTimeImmutable
 	 */
 	public function getDate();
 
@@ -28,7 +28,7 @@ interface IDateTimeProvider
 	public function getTime();
 
 	/**
-	 * @return \DateTime|\DateTimeInterface
+	 * @return \DateTimeImmutable
 	 */
 	public function getDateTime();
 

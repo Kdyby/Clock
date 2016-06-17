@@ -17,6 +17,7 @@ use Kdyby\StrictObjects\Scream;
 
 /**
  * @author Filip Procházka <filip@prochazka.su>
+ * @author Richard Ejem <richard@ejem.cz>
  */
 class CurrentProvider implements Kdyby\Clock\IDateTimeProvider
 {
@@ -48,7 +49,7 @@ class CurrentProvider implements Kdyby\Clock\IDateTimeProvider
 	 */
 	public function getDateTime()
 	{
-		return new \DateTime();
+		return new \DateTimeImmutable();
 	}
 
 
