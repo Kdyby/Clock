@@ -26,12 +26,19 @@ class ClockExtension extends Nette\DI\CompilerExtension
 
 	public $defaults = array(
 		'provider' => 'standard',
+		'mutable' => FALSE,
 	);
 
 	public static $providers = array(
 		'standard' => 'Kdyby\Clock\Providers\ConstantProvider',
 		'request' => 'Kdyby\Clock\Providers\ConstantProvider',
 		'current' => 'Kdyby\Clock\Providers\CurrentProvider',
+	);
+
+	public static $immutableProviders = array(
+		'standard' => 'Kdyby\Clock\ImmutableProviders\ConstantProvider',
+		'request' => 'Kdyby\Clock\ImmutableProviders\ConstantProvider',
+		'current' => 'Kdyby\Clock\ImmutableProviders\CurrentProvider',
 	);
 
 
@@ -42,8 +49,10 @@ class ClockExtension extends Nette\DI\CompilerExtension
 		$builder = $this->getContainerBuilder();
 
 		$providerImpl = $config['provider'];
-		if (isset(self::$providers[$providerImpl])) {
-			$providerImpl = self::$providers[$providerImpl];
+
+		$providers = $config['mutable'] ? self::$providers : self::$immutableProviders;
+		if (isset($providers[$providerImpl])) {
+			$providerImpl = $providers[$providerImpl];
 		}
 
 		if (!class_exists($providerImpl)) {
