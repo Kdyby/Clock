@@ -1,0 +1,6 @@
+nette:
+	security:
+		frames: null
+
+	session:
+		autoStart: false

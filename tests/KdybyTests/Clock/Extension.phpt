@@ -34,7 +34,12 @@ class ExtensionTest extends Tester\TestCase
 		$config = new Nette\Configurator();
 		$config->setTempDirectory(TEMP_DIR);
 		$config->addParameters(array('container' => array('class' => 'SystemContainer_' . md5($configFile))));
-		$config->addConfig(__DIR__ . '/../nette-reset.neon', !isset($config->defaultExtensions['nette']) ? 'v23' : 'v22');
+		$config->addConfig(__DIR__ . '/../nette-reset.neon');
+		if (isset($config->defaultExtensions['nette'])) {
+			$config->addConfig(__DIR__ . '/../nette-reset-v22.neon');
+		} else {
+			$config->addConfig(__DIR__ . '/../nette-reset-v23.neon');
+		}
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
 		Kdyby\Clock\DI\ClockExtension::register($config);
 
