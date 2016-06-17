@@ -19,11 +19,14 @@ require_once __DIR__ . '/../bootstrap.php';
 require_once __DIR__ . '/clockContainerFactory.inc.php';
 
 
+if (PHP_VERSION_ID <= 50500) {
+	Tester\Environment::skip('DateTimeImmutable is not available on PHP < 5.5');
+}
 
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class ExtensionTest extends Tester\TestCase
+class ExtensionImmutableTest extends Tester\TestCase
 {
 
 	/**
@@ -32,7 +35,7 @@ class ExtensionTest extends Tester\TestCase
 	 */
 	public function createContainer($configFile)
 	{
-		return ClockContainerFactory::createContainer($configFile, TRUE);
+		return ClockContainerFactory::createContainer($configFile);
 	}
 
 
@@ -43,7 +46,7 @@ class ExtensionTest extends Tester\TestCase
 		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
+		Assert::true($provider instanceof Kdyby\Clock\ImmutableProviders\ConstantProvider);
 	}
 
 
@@ -54,7 +57,7 @@ class ExtensionTest extends Tester\TestCase
 		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
+		Assert::true($provider instanceof Kdyby\Clock\ImmutableProviders\ConstantProvider);
 		Assert::same((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 
 		$_SERVER['REQUEST_TIME'] = 987654321;
@@ -70,9 +73,9 @@ class ExtensionTest extends Tester\TestCase
 		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\CurrentProvider);
+		Assert::true($provider instanceof Kdyby\Clock\ImmutableProviders\CurrentProvider);
 	}
 
 }
 
-\run(new ExtensionTest());
+\run(new ExtensionImmutableTest());
