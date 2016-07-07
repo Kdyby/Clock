@@ -24,15 +24,15 @@ use Nette\PhpGenerator as Code;
 class ClockExtension extends Nette\DI\CompilerExtension
 {
 
-	public $defaults = array(
+	public $defaults = [
 		'provider' => 'standard',
-	);
+	];
 
-	public static $providers = array(
+	public static $providers = [
 		'standard' => 'Kdyby\Clock\Providers\ConstantProvider',
 		'request' => 'Kdyby\Clock\Providers\ConstantProvider',
 		'current' => 'Kdyby\Clock\Providers\CurrentProvider',
-	);
+	];
 
 
 
@@ -59,11 +59,11 @@ class ClockExtension extends Nette\DI\CompilerExtension
 			->setFactory($providerImpl);
 
 		if ($config['provider'] === 'request') {
-			$providerDef->setArguments(array(new Code\PhpLiteral('isset($_SERVER["REQUEST_TIME"]) ? $_SERVER["REQUEST_TIME"] : time()')));
+			$providerDef->setArguments([new Code\PhpLiteral('isset($_SERVER["REQUEST_TIME"]) ? $_SERVER["REQUEST_TIME"] : time()')]);
 			$providerDef->addTag('run');
 
 		} elseif ($config['provider'] === 'standard') {
-			$providerDef->setArguments(array(new Code\PhpLiteral('time()')));
+			$providerDef->setArguments([new Code\PhpLiteral('time()')]);
 		}
 	}
 
