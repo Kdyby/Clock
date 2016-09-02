@@ -11,7 +11,7 @@
 namespace Kdyby\Clock\Providers;
 
 use Kdyby\Clock\IDateTimeProvider;
-use Nette\Object;
+use Kdyby\StrictObjects\Scream;
 
 
 
@@ -19,8 +19,10 @@ use Nette\Object;
  * Base implementation for DateTime-based providers.
  * @author Michael Moravec
  */
-abstract class AbstractProvider extends Object implements IDateTimeProvider
+abstract class AbstractProvider implements IDateTimeProvider
 {
+	use Scream;
+
 	/**
 	 * @var \DateTime
 	 */

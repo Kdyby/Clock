@@ -11,6 +11,7 @@
 namespace Kdyby\Clock\Providers;
 
 use Kdyby;
+use Kdyby\StrictObjects\Scream;
 use Nette;
 
 
@@ -18,8 +19,9 @@ use Nette;
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class CurrentProvider extends Nette\Object implements Kdyby\Clock\IDateTimeProvider
+class CurrentProvider implements Kdyby\Clock\IDateTimeProvider
 {
+	use Scream;
 
 	/**
 	 * {@inheritdoc}
