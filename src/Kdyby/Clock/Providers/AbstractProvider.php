@@ -18,21 +18,28 @@ use Kdyby\StrictObjects\Scream;
 /**
  * Base implementation for DateTime-based providers.
  * @author Michael Moravec
+ * @author Richard Ejem <richard@ejem.cz>
  */
 abstract class AbstractProvider implements IDateTimeProvider
 {
 	use Scream;
 
 	/**
-	 * @var \DateTime
+	 * @var \DateTimeImmutable
 	 */
 	protected $prototype;
 
+	/**
+	 * Cached date immutable object (time 0:00:00)
+	 *
+	 * @var \DateTimeImmutable
+	 */
+	protected $date;
 
 
-	public function __construct(\DateTime $prototype)
+	public function __construct(\DateTimeImmutable $prototype)
 	{
-		$this->prototype = clone $prototype;
+		$this->prototype = $prototype;
 	}
 
 
@@ -42,10 +49,11 @@ abstract class AbstractProvider implements IDateTimeProvider
 	 */
 	public function getDate()
 	{
-		$date = clone $this->prototype;
-		$date->setTime(0, 0, 0);
+		if ($this->date === NULL) {
+			$this->date = $this->prototype->setTime(0, 0, 0);
+		}
 
-		return $date;
+		return $this->date;
 	}
 
 
@@ -65,7 +73,7 @@ abstract class AbstractProvider implements IDateTimeProvider
 	 */
 	public function getDateTime()
 	{
-		return clone $this->prototype;
+		return $this->prototype;
 	}
 
 
@@ -75,6 +83,6 @@ abstract class AbstractProvider implements IDateTimeProvider
 	 */
 	public function getTimezone()
 	{
-		return clone $this->prototype->getTimezone();
+		return $this->prototype->getTimezone();
 	}
 }

@@ -16,20 +16,24 @@ use Kdyby;
 
 /**
  * @author Filip Procházka <filip@prochazka.su>
+ * @author Richard Ejem <richard@ejem.cz>
  */
 class ConstantProvider extends AbstractProvider
 {
 
 	/**
-	 * @param string|int|\DateTime $dateTime
+	 * @param string|int|\DateTimeInterface $dateTime
 	 */
 	public function __construct($dateTime)
 	{
-		if ($dateTime instanceof \DateTime) {
-			parent::__construct(clone $dateTime);
+		if ($dateTime instanceof \DateTimeInterface) {
+			if ($dateTime instanceof \DateTime) {
+				$dateTime = \DateTimeImmutable::createFromMutable($dateTime);
+			}
+			parent::__construct($dateTime);
 
 		} elseif (is_numeric($dateTime)) {
-			parent::__construct(new \DateTime(date('Y-m-d H:i:s', $dateTime), new \DateTimeZone(date_default_timezone_get())));
+			parent::__construct(new \DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new \DateTimeZone(date_default_timezone_get())));
 
 		} else {
 			throw new Kdyby\Clock\NotImplementedException(sprintf('Cannot process datetime in given format %s', $dateTime));
