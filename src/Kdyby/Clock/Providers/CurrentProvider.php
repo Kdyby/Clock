@@ -12,7 +12,6 @@ namespace Kdyby\Clock\Providers;
 
 use Kdyby;
 use Kdyby\StrictObjects\Scream;
-use Nette;
 
 
 

@@ -11,7 +11,6 @@
 namespace Kdyby\Clock\Providers;
 
 use Kdyby;
-use Nette;
 
 
 
