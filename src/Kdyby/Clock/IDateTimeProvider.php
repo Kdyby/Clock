@@ -20,20 +20,20 @@ interface IDateTimeProvider
 	/**
 	 * @return \DateTime|\DateTimeInterface
 	 */
-	function getDate();
+	public function getDate();
 
 	/**
 	 * @return \DateInterval
 	 */
-	function getTime();
+	public function getTime();
 
 	/**
 	 * @return \DateTime|\DateTimeInterface
 	 */
-	function getDateTime();
+	public function getDateTime();
 
 	/**
 	 * @return \DateTimeZone
 	 */
-	function getTimezone();
+	public function getTimezone();
 }

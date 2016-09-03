@@ -12,7 +12,6 @@ namespace KdybyTests\Clock;
 
 use Kdyby;
 use Kdyby\Clock\Providers\ConstantProvider;
-use Nette;
 use Tester;
 use Tester\Assert;
 
