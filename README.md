@@ -5,7 +5,7 @@ Kdyby/Clock
 [![Downloads this Month](https://img.shields.io/packagist/dm/kdyby/clock.svg)](https://packagist.org/packages/kdyby/clock)
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/clock.svg)](https://packagist.org/packages/kdyby/clock)
 [![Coverage Status](https://coveralls.io/repos/github/Kdyby/Clock/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Clock?branch=master)
-[![Join the chat at https://gitter.im/Kdyby/Help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Kdyby/Help)
+
 
 
 Requirements
