@@ -6,16 +6,6 @@ Kdyby/Clock
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/clock.svg)](https://packagist.org/packages/kdyby/clock)
 [![Coverage Status](https://coveralls.io/repos/github/Kdyby/Clock/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Clock?branch=master)
 
-
-
-Requirements
-------------
-
-Kdyby/Clock requires PHP 5.5 or higher.
-
-- [Nette Framework](https://github.com/nette/nette)
-
-
 Installation
 ------------
 
@@ -25,6 +15,10 @@ The best way to install Kdyby/Clock is using  [Composer](http://getcomposer.org/
 $ composer require kdyby/clock
 ```
 
+Documentation
+------------
+
+Learn more in the [documentation](https://github.com/Kdyby/Clock/blob/master/docs/en/index.md).
 
 -----
 
