@@ -35,8 +35,17 @@ class ConstantProvider extends AbstractProvider
 		} elseif (is_numeric($dateTime)) {
 			parent::__construct(new \DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new \DateTimeZone(date_default_timezone_get())));
 
+		} elseif (is_string($dateTime)) {
+			throw new Kdyby\Clock\NotImplementedException(sprintf(
+				'Cannot process datetime in given format "%s"',
+				$dateTime
+			));
+
 		} else {
-			throw new Kdyby\Clock\NotImplementedException(sprintf('Cannot process datetime in given format %s', $dateTime));
+			throw new Kdyby\Clock\NotImplementedException(sprintf(
+				'Cannot process datetime from given value %s',
+				is_object($dateTime) ? get_class($dateTime) : gettype($dateTime)
+			));
 		}
 	}
 
