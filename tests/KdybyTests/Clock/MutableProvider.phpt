@@ -71,4 +71,4 @@ class MutableProviderTest extends Tester\TestCase
 
 }
 
-\run(new MutableProviderTest());
+(new MutableProviderTest())->run();

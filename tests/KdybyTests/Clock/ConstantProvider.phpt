@@ -61,4 +61,4 @@ class ConstantProviderTest extends Tester\TestCase
 
 }
 
-\run(new ConstantProviderTest());
+(new ConstantProviderTest())->run();

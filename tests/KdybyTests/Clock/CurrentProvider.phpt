@@ -57,4 +57,4 @@ class CurrentProviderTest extends Tester\TestCase
 
 }
 
-\run(new CurrentProviderTest());
+(new CurrentProviderTest())->run();
