@@ -35,7 +35,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('\DateTimeImmutable', $datetime);
+		Assert::type('DateTimeImmutable', $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
@@ -54,7 +54,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('\DateTimeImmutable', $datetime);
+		Assert::type('DateTimeImmutable', $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
@@ -73,7 +73,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('\DateTimeImmutable', $datetime);
+		Assert::type('DateTimeImmutable', $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
