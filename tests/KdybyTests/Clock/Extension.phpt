@@ -34,7 +34,6 @@ class ExtensionTest extends Tester\TestCase
 		$config = new Nette\Configurator();
 		$config->setTempDirectory(TEMP_DIR);
 		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
-		$config->addConfig(__DIR__ . '/../nette-reset.neon');
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
 		Kdyby\Clock\DI\ClockExtension::register($config);
 
