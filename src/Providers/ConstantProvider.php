@@ -30,6 +30,9 @@ class ConstantProvider extends AbstractProvider
 			if ($dateTime instanceof \DateTime) {
 				$dateTime = \DateTimeImmutable::createFromMutable($dateTime);
 			}
+			if (!$dateTime instanceof \DateTimeImmutable) {
+				throw new Kdyby\Clock\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
+			}
 			parent::__construct($dateTime);
 
 		} elseif (is_numeric($dateTime)) {

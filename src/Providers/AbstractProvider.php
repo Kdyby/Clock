@@ -32,7 +32,7 @@ abstract class AbstractProvider implements IDateTimeProvider
 	/**
 	 * Cached date immutable object (time 0:00:00)
 	 *
-	 * @var \DateTimeImmutable
+	 * @var \DateTimeImmutable|NULL
 	 */
 	protected $date;
 
