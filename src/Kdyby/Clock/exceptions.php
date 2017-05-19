@@ -55,60 +55,7 @@ class UnexpectedValueException extends \UnexpectedValueException implements Exce
 /**
  * @author Filip Procházka <filip@prochazka.su>
  */
-class NotEnoughPreciseException extends \RuntimeException implements Exception
-{
-
-	/**
-	 * @param $currentPrecision
-	 * @return NotEnoughPreciseException
-	 */
-	public static function whenModifying($currentPrecision)
-	{
-		return new static("The operation you're trying to invoke requires higher precision than this object can achieve, which is $currentPrecision.");
-	}
-
-}
-
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
 class NotImplementedException extends \LogicException implements Exception
 {
-
-}
-
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class ImmutableException extends \LogicException implements Exception
-{
-
-	/**
-	 * @param object $object
-	 * @param string $propertyName
-	 * @return ImmutableException
-	 */
-	public static function fromProperty($object, $propertyName)
-	{
-		$class = get_class($object);
-		return new static("Property $propertyName of $class is immutable and it's state cannot be changed.");
-	}
-
-
-
-	/**
-	 * @param object $object
-	 * @param string $methodName
-	 * @return ImmutableException
-	 */
-	public static function fromMethod($object, $methodName)
-	{
-		$class = get_class($object);
-		return new static("Method $methodName of $class cannot be called, because the object is immutable and it's state cannot be changed.");
-	}
 
 }
