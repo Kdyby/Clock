@@ -35,7 +35,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('DateTimeImmutable', $datetime);
+		Assert::type(\DateTimeImmutable::class, $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
@@ -54,7 +54,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('DateTimeImmutable', $datetime);
+		Assert::type(\DateTimeImmutable::class, $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
@@ -73,7 +73,7 @@ class ConstantProviderTest extends Tester\TestCase
 
 		sleep(2);
 
-		Assert::type('DateTimeImmutable', $datetime);
+		Assert::type(\DateTimeImmutable::class, $datetime);
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date, $tp->getDate());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
@@ -103,11 +103,11 @@ class ConstantProviderTest extends Tester\TestCase
 	{
 		Assert::exception(function () {
 			new ConstantProvider('blablabla');
-		}, 'Kdyby\Clock\NotImplementedException', 'Cannot process datetime in given format "blablabla"');
+		}, Kdyby\Clock\NotImplementedException::class, 'Cannot process datetime in given format "blablabla"');
 
 		Assert::exception(function () {
 			new ConstantProvider(new \stdClass());
-		}, 'Kdyby\Clock\NotImplementedException', 'Cannot process datetime from given value stdClass');
+		}, Kdyby\Clock\NotImplementedException::class, 'Cannot process datetime from given value stdClass');
 	}
 
 }

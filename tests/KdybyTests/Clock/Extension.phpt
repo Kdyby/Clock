@@ -45,7 +45,7 @@ class ExtensionTest extends Tester\TestCase
 	public function testStandardProvider()
 	{
 		$container = $this->createContainer('provider.standard');
-		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
+		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
 		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
@@ -56,7 +56,7 @@ class ExtensionTest extends Tester\TestCase
 	public function testRequestTimeProvider()
 	{
 		$container = $this->createContainer('provider.requestTime');
-		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
+		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
 		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
@@ -72,7 +72,7 @@ class ExtensionTest extends Tester\TestCase
 	public function testCurrentProvider()
 	{
 		$container = $this->createContainer('provider.current');
-		$provider = $container->getByType('Kdyby\Clock\IDateTimeProvider');
+		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
 
 		Assert::true($provider instanceof Kdyby\Clock\Providers\CurrentProvider);

@@ -24,14 +24,18 @@ use Nette\PhpGenerator as Code;
 class ClockExtension extends Nette\DI\CompilerExtension
 {
 
+	const STANDARD_PROVIDER = 'standard';
+	const REQUEST_PROVIDER = 'request';
+	const CURRENT_PROVIDER = 'current';
+
 	public $defaults = [
-		'provider' => 'standard',
+		'provider' => self::STANDARD_PROVIDER,
 	];
 
 	public static $providers = [
-		'standard' => 'Kdyby\Clock\Providers\ConstantProvider',
-		'request' => 'Kdyby\Clock\Providers\ConstantProvider',
-		'current' => 'Kdyby\Clock\Providers\CurrentProvider',
+		self::STANDARD_PROVIDER => Kdyby\Clock\Providers\ConstantProvider::class,
+		self::REQUEST_PROVIDER => Kdyby\Clock\Providers\ConstantProvider::class,
+		self::CURRENT_PROVIDER => Kdyby\Clock\Providers\CurrentProvider::class,
 	];
 
 
@@ -47,22 +51,26 @@ class ClockExtension extends Nette\DI\CompilerExtension
 		}
 
 		if (!class_exists($providerImpl)) {
-			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' does not exist or could not be loaded.");
+			throw new UnexpectedValueException(sprintf('DateTime provider implementation "%s" does not exist or could not be loaded.', $providerImpl));
 		}
 
 		if (!in_array('Kdyby\Clock\IDateTimeProvider', class_implements($providerImpl), TRUE)) {
-			throw new UnexpectedValueException("DateTime provider implementation '$providerImpl' must implement interface Kdyby\\Clock\\IDateTimeProvider.");
+			throw new UnexpectedValueException(sprintf(
+				'DateTime provider implementation "%s" must implement interface %s.',
+				$providerImpl,
+				Kdyby\Clock\IDateTimeProvider::class
+			));
 		}
 
 		$providerDef = $builder->addDefinition($this->prefix('dateTimeProvider'))
-			->setClass('Kdyby\Clock\IDateTimeProvider')
+			->setClass(Kdyby\Clock\IDateTimeProvider::class)
 			->setFactory($providerImpl);
 
-		if ($config['provider'] === 'request') {
+		if ($config['provider'] === self::REQUEST_PROVIDER) {
 			$providerDef->setArguments([new Code\PhpLiteral('isset($_SERVER["REQUEST_TIME"]) ? $_SERVER["REQUEST_TIME"] : time()')]);
 			$providerDef->addTag('run');
 
-		} elseif ($config['provider'] === 'standard') {
+		} elseif ($config['provider'] === self::STANDARD_PROVIDER) {
 			$providerDef->setArguments([new Code\PhpLiteral('time()')]);
 		}
 	}
