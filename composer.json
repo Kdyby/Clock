@@ -32,11 +32,11 @@
 	},
 	"minimum-stability": "dev",
 	"autoload": {
-		"psr-0": {
+		"psr-4": {
 			"Kdyby\\Clock\\": "src/"
 		},
 		"classmap": [
-			"src/Kdyby/Clock/exceptions.php"
+			"src/exceptions.php"
 		]
 	},
 	"extra": {
