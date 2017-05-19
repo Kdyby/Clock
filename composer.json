@@ -30,6 +30,7 @@
 		"nette/di": "^2.4@dev",
 		"nette/tester": "~1.7"
 	},
+	"minimum-stability": "dev",
 	"autoload": {
 		"psr-0": {
 			"Kdyby\\Clock\\": "src/"
