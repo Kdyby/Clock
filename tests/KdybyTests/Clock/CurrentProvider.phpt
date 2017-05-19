@@ -28,6 +28,7 @@ class CurrentProviderTest extends Tester\TestCase
 	public function testNotConstant()
 	{
 		$tp = new CurrentProvider();
+		$date = $tp->getDate();
 		$datetime = $tp->getDateTime();
 		$time = $tp->getTime();
 		$timezone = $tp->getTimezone();
@@ -35,6 +36,7 @@ class CurrentProviderTest extends Tester\TestCase
 		sleep(2);
 
 		Assert::type('\DateTimeImmutable', $datetime);
+		Assert::same('00:00:00', $date->format('H:i:s'));
 		Assert::notEqual($datetime, $tp->getDateTime());
 		Assert::notEqual($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
