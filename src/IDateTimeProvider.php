@@ -10,13 +10,9 @@
 
 namespace Kdyby\Clock;
 
-
-
-/**
- * @author Michael Moravec
- */
 interface IDateTimeProvider
 {
+
 	/**
 	 * @return \DateTimeImmutable
 	 */
@@ -36,4 +32,5 @@ interface IDateTimeProvider
 	 * @return \DateTimeZone
 	 */
 	public function getTimezone();
+
 }

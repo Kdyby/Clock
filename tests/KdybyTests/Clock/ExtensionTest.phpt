@@ -3,63 +3,54 @@
 /**
  * Test: Kdyby\Clock\Extension.
  *
- * @testCase Kdyby\Clock\ExtensionTest
- * @author Filip Procházka <filip@prochazka.su>
- * @package Kdyby\Clock
+ * @testCase
  */
 
 namespace KdybyTests\Clock;
 
-use Kdyby;
-use Nette;
-use Tester;
+use Kdyby\Clock\DI\ClockExtension;
+use Kdyby\Clock\IDateTimeProvider;
+use Kdyby\Clock\Providers\ConstantProvider;
+use Kdyby\Clock\Providers\CurrentProvider;
+use Nette\Configurator;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class ExtensionTest extends Tester\TestCase
+class ExtensionTest extends \Tester\TestCase
 {
 
 	/**
 	 * @param string $configFile
-	 * @return \SystemContainer|Nette\DI\Container
+	 * @return \SystemContainer|\Nette\DI\Container
 	 */
 	public function createContainer($configFile)
 	{
-		$config = new Nette\Configurator();
+		$config = new Configurator();
 		$config->setTempDirectory(TEMP_DIR);
 		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
-		Kdyby\Clock\DI\ClockExtension::register($config);
+		ClockExtension::register($config);
 
 		return $config->createContainer();
 	}
 
-
-
 	public function testStandardProvider()
 	{
 		$container = $this->createContainer('provider.standard');
-		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
+		$provider = $container->getByType(IDateTimeProvider::class);
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
+		Assert::true($provider instanceof ConstantProvider);
 	}
-
-
 
 	public function testRequestTimeProvider()
 	{
 		$container = $this->createContainer('provider.requestTime');
-		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
+		$provider = $container->getByType(IDateTimeProvider::class);
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\ConstantProvider);
+		Assert::true($provider instanceof ConstantProvider);
 		Assert::same((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 
 		$_SERVER['REQUEST_TIME'] = 987654321;
@@ -67,15 +58,13 @@ class ExtensionTest extends Tester\TestCase
 		Assert::notSame((string) $_SERVER['REQUEST_TIME'], $provider->getDateTime()->format('U'));
 	}
 
-
-
 	public function testCurrentProvider()
 	{
 		$container = $this->createContainer('provider.current');
-		$provider = $container->getByType(Kdyby\Clock\IDateTimeProvider::class);
 		/** @var \Kdyby\Clock\IDateTimeProvider $provider */
+		$provider = $container->getByType(IDateTimeProvider::class);
 
-		Assert::true($provider instanceof Kdyby\Clock\Providers\CurrentProvider);
+		Assert::true($provider instanceof CurrentProvider);
 	}
 
 }

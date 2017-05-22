@@ -10,52 +10,27 @@
 
 namespace Kdyby\Clock;
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
 interface Exception
 {
 
 }
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class InvalidStateException extends \RuntimeException implements Exception
+class InvalidStateException extends \RuntimeException implements \Kdyby\Clock\Exception
 {
 
 }
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class InvalidArgumentException extends \InvalidArgumentException implements Exception
+class InvalidArgumentException extends \InvalidArgumentException implements \Kdyby\Clock\Exception
 {
 
 }
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class UnexpectedValueException extends \UnexpectedValueException implements Exception
+class UnexpectedValueException extends \UnexpectedValueException implements \Kdyby\Clock\Exception
 {
 
 }
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class NotImplementedException extends \LogicException implements Exception
+class NotImplementedException extends \LogicException implements \Kdyby\Clock\Exception
 {
 
 }

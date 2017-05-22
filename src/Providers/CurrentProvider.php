@@ -10,18 +10,14 @@
 
 namespace Kdyby\Clock\Providers;
 
-use Kdyby;
-use Kdyby\StrictObjects\Scream;
+use DateInterval;
+use DateTimeImmutable;
+use DateTimeZone;
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- * @author Richard Ejem <richard@ejem.cz>
- */
-class CurrentProvider implements Kdyby\Clock\IDateTimeProvider
+class CurrentProvider implements \Kdyby\Clock\IDateTimeProvider
 {
-	use Scream;
+
+	use \Kdyby\StrictObjects\Scream;
 
 	/**
 	 * {@inheritdoc}
@@ -31,35 +27,29 @@ class CurrentProvider implements Kdyby\Clock\IDateTimeProvider
 		return $this->getDateTime()->setTime(0, 0, 0);
 	}
 
-
-
 	/**
 	 * {@inheritdoc}
 	 */
 	public function getTime()
 	{
 		$now = $this->getDateTime();
-		return new \DateInterval(sprintf('PT%dH%dM%dS', $now->format('G'), $now->format('i'), $now->format('s')));
+		return new DateInterval(sprintf('PT%dH%dM%dS', $now->format('G'), $now->format('i'), $now->format('s')));
 	}
-
-
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function getDateTime()
 	{
-		return new \DateTimeImmutable();
+		return new DateTimeImmutable();
 	}
-
-
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function getTimezone()
 	{
-		return new \DateTimeZone(date_default_timezone_get());
+		return new DateTimeZone(date_default_timezone_get());
 	}
 
 }

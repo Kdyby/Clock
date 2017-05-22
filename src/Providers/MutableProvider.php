@@ -10,17 +10,12 @@
 
 namespace Kdyby\Clock\Providers;
 
-use Kdyby;
+use DateTimeImmutable;
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- */
-class MutableProvider extends AbstractProvider
+class MutableProvider extends \Kdyby\Clock\Providers\AbstractProvider
 {
 
-	public function changePrototype(\DateTimeImmutable $prototype)
+	public function changePrototype(DateTimeImmutable $prototype)
 	{
 		$this->prototype = $prototype;
 		$this->date = NULL;

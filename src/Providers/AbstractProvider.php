@@ -10,19 +10,16 @@
 
 namespace Kdyby\Clock\Providers;
 
-use Kdyby\Clock\IDateTimeProvider;
-use Kdyby\StrictObjects\Scream;
-
-
+use DateInterval;
+use DateTimeImmutable;
 
 /**
  * Base implementation for DateTime-based providers.
- * @author Michael Moravec
- * @author Richard Ejem <richard@ejem.cz>
  */
-abstract class AbstractProvider implements IDateTimeProvider
+abstract class AbstractProvider implements \Kdyby\Clock\IDateTimeProvider
 {
-	use Scream;
+
+	use \Kdyby\StrictObjects\Scream;
 
 	/**
 	 * @var \DateTimeImmutable
@@ -36,13 +33,10 @@ abstract class AbstractProvider implements IDateTimeProvider
 	 */
 	protected $date;
 
-
-	public function __construct(\DateTimeImmutable $prototype)
+	public function __construct(DateTimeImmutable $prototype)
 	{
 		$this->prototype = $prototype;
 	}
-
-
 
 	/**
 	 * {@inheritdoc}
@@ -56,17 +50,13 @@ abstract class AbstractProvider implements IDateTimeProvider
 		return $this->date;
 	}
 
-
-
 	/**
 	 * {@inheritdoc}
 	 */
 	public function getTime()
 	{
-		return new \DateInterval(sprintf('PT%dH%dM%dS', $this->prototype->format('G'), $this->prototype->format('i'), $this->prototype->format('s')));
+		return new DateInterval(sprintf('PT%dH%dM%dS', $this->prototype->format('G'), $this->prototype->format('i'), $this->prototype->format('s')));
 	}
-
-
 
 	/**
 	 * {@inheritdoc}
@@ -76,8 +66,6 @@ abstract class AbstractProvider implements IDateTimeProvider
 		return $this->prototype;
 	}
 
-
-
 	/**
 	 * {@inheritdoc}
 	 */
@@ -85,4 +73,5 @@ abstract class AbstractProvider implements IDateTimeProvider
 	{
 		return $this->prototype->getTimezone();
 	}
+
 }

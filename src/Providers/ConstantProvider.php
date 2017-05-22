@@ -10,15 +10,12 @@
 
 namespace Kdyby\Clock\Providers;
 
-use Kdyby;
+use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
+use DateTimeZone;
 
-
-
-/**
- * @author Filip Procházka <filip@prochazka.su>
- * @author Richard Ejem <richard@ejem.cz>
- */
-class ConstantProvider extends AbstractProvider
+class ConstantProvider extends \Kdyby\Clock\Providers\AbstractProvider
 {
 
 	/**
@@ -26,26 +23,26 @@ class ConstantProvider extends AbstractProvider
 	 */
 	public function __construct($dateTime)
 	{
-		if ($dateTime instanceof \DateTimeInterface) {
-			if ($dateTime instanceof \DateTime) {
-				$dateTime = \DateTimeImmutable::createFromMutable($dateTime);
+		if ($dateTime instanceof DateTimeInterface) {
+			if ($dateTime instanceof DateTime) {
+				$dateTime = DateTimeImmutable::createFromMutable($dateTime);
 			}
-			if (!$dateTime instanceof \DateTimeImmutable) {
-				throw new Kdyby\Clock\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
+			if (!$dateTime instanceof DateTimeImmutable) {
+				throw new \Kdyby\Clock\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
 			}
 			parent::__construct($dateTime);
 
 		} elseif (is_numeric($dateTime)) {
-			parent::__construct(new \DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new \DateTimeZone(date_default_timezone_get())));
+			parent::__construct(new DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new DateTimeZone(date_default_timezone_get())));
 
 		} elseif (is_string($dateTime)) {
-			throw new Kdyby\Clock\NotImplementedException(sprintf(
+			throw new \Kdyby\Clock\NotImplementedException(sprintf(
 				'Cannot process datetime in given format "%s"',
 				$dateTime
 			));
 
 		} else {
-			throw new Kdyby\Clock\NotImplementedException(sprintf(
+			throw new \Kdyby\Clock\NotImplementedException(sprintf(
 				'Cannot process datetime from given value %s',
 				is_object($dateTime) ? get_class($dateTime) : gettype($dateTime)
 			));
