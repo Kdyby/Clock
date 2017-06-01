@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace Kdyby\Clock\Providers;
+namespace Kdyby\DateTimeProvider\Providers;
 
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 
-class ConstantProvider extends \Kdyby\Clock\Providers\AbstractProvider
+class ConstantProvider extends \Kdyby\DateTimeProvider\Providers\AbstractProvider
 {
 
 	/**
@@ -28,7 +28,7 @@ class ConstantProvider extends \Kdyby\Clock\Providers\AbstractProvider
 				$dateTime = DateTimeImmutable::createFromMutable($dateTime);
 			}
 			if (!$dateTime instanceof DateTimeImmutable) {
-				throw new \Kdyby\Clock\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
+				throw new \Kdyby\DateTimeProvider\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
 			}
 			parent::__construct($dateTime);
 
@@ -36,13 +36,13 @@ class ConstantProvider extends \Kdyby\Clock\Providers\AbstractProvider
 			parent::__construct(new DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new DateTimeZone(date_default_timezone_get())));
 
 		} elseif (is_string($dateTime)) {
-			throw new \Kdyby\Clock\NotImplementedException(sprintf(
+			throw new \Kdyby\DateTimeProvider\NotImplementedException(sprintf(
 				'Cannot process datetime in given format "%s"',
 				$dateTime
 			));
 
 		} else {
-			throw new \Kdyby\Clock\NotImplementedException(sprintf(
+			throw new \Kdyby\DateTimeProvider\NotImplementedException(sprintf(
 				'Cannot process datetime from given value %s',
 				is_object($dateTime) ? get_class($dateTime) : gettype($dateTime)
 			));

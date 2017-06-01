@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Test: Kdyby\Clock\MutableProvider.
+ * Test: Kdyby\DateTimeProvider\MutableProvider.
  *
  * @testCase
  */
 
-namespace KdybyTests\Clock;
+namespace KdybyTests\DateTimeProvider;
 
 use DateTimeImmutable;
-use Kdyby\Clock\Providers\MutableProvider;
+use Kdyby\DateTimeProvider\Providers\MutableProvider;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';

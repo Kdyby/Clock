@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Test: Kdyby\Clock\ConstantProvider.
+ * Test: Kdyby\DateTimeProvider\ConstantProvider.
  *
- * @testCase KdybyTests\Clock\ConstantProviderTest
+ * @testCase KdybyTests\DateTimeProvider\ConstantProviderTest
  */
 
-namespace KdybyTests\Clock;
+namespace KdybyTests\DateTimeProvider;
 
 use DateTime;
 use DateTimeImmutable;
-use Kdyby\Clock\Providers\ConstantProvider;
+use Kdyby\DateTimeProvider\Providers\ConstantProvider;
 use Tester\Assert;
 use stdClass;
 
@@ -89,11 +89,11 @@ class ConstantProviderTest extends \Tester\TestCase
 	{
 		Assert::exception(function () {
 			new ConstantProvider('blablabla');
-		}, \Kdyby\Clock\NotImplementedException::class, 'Cannot process datetime in given format "blablabla"');
+		}, \Kdyby\DateTimeProvider\NotImplementedException::class, 'Cannot process datetime in given format "blablabla"');
 
 		Assert::exception(function () {
 			new ConstantProvider(new stdClass());
-		}, \Kdyby\Clock\NotImplementedException::class, 'Cannot process datetime from given value stdClass');
+		}, \Kdyby\DateTimeProvider\NotImplementedException::class, 'Cannot process datetime from given value stdClass');
 	}
 
 }

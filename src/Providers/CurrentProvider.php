@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace Kdyby\Clock\Providers;
+namespace Kdyby\DateTimeProvider\Providers;
 
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
 
-class CurrentProvider implements \Kdyby\Clock\IDateTimeProvider
+class CurrentProvider implements \Kdyby\DateTimeProvider\IDateTimeProvider
 {
 
 	use \Kdyby\StrictObjects\Scream;

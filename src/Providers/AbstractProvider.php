@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace Kdyby\Clock\Providers;
+namespace Kdyby\DateTimeProvider\Providers;
 
 use DateInterval;
 use DateTimeImmutable;
@@ -16,7 +16,7 @@ use DateTimeImmutable;
 /**
  * Base implementation for DateTime-based providers.
  */
-abstract class AbstractProvider implements \Kdyby\Clock\IDateTimeProvider
+abstract class AbstractProvider implements \Kdyby\DateTimeProvider\IDateTimeProvider
 {
 
 	use \Kdyby\StrictObjects\Scream;

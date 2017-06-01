@@ -31,7 +31,7 @@
 	"minimum-stability": "dev",
 	"autoload": {
 		"psr-4": {
-			"Kdyby\\Clock\\": "src/"
+			"Kdyby\\DateTimeProvider\\": "src/"
 		},
 		"classmap": [
 			"src/exceptions.php"
