@@ -16,7 +16,7 @@ use DateTimeImmutable;
 /**
  * Base implementation for DateTime-based providers.
  */
-abstract class AbstractProvider implements \Kdyby\DateTimeProvider\IDateTimeProvider
+abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
 {
 
 	use \Kdyby\StrictObjects\Scream;

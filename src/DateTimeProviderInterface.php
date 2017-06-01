@@ -10,7 +10,7 @@
 
 namespace Kdyby\DateTimeProvider;
 
-interface IDateTimeProvider
+interface DateTimeProviderInterface
 {
 
 	/**

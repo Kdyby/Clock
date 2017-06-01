@@ -14,7 +14,7 @@ use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
 
-class CurrentProvider implements \Kdyby\DateTimeProvider\IDateTimeProvider
+class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
 {
 
 	use \Kdyby\StrictObjects\Scream;
