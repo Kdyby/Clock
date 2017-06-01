@@ -28,7 +28,7 @@ class MutableProviderTest extends \Tester\TestCase
 		sleep(2);
 
 		Assert::same($datetime, $tp->getDateTime());
-		Assert::same($date, $tp->getDate());
+		Assert::same($date->getTimestamp(), $tp->getDate()->getTimestamp());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}

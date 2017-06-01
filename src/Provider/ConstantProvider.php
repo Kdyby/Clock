@@ -18,7 +18,7 @@ use DateTimeZone;
 class ConstantProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
 {
 
-	use \Kdyby\DateTimeProvider\Provider\ProviderTrait;
+	use \Kdyby\DateTimeProvider\Provider\ImmutableProviderTrait;
 	use \Kdyby\StrictObjects\Scream;
 
 	/**

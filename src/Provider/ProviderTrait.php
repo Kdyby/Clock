@@ -20,13 +20,6 @@ use DateTimeZone;
 trait ProviderTrait
 {
 
-	/**
-	 * Cached date immutable object (time 0:00:00)
-	 *
-	 * @var \DateTimeImmutable|NULL
-	 */
-	private $date;
-
 	abstract protected function getPrototype(): DateTimeImmutable;
 
 	/**
@@ -34,11 +27,7 @@ trait ProviderTrait
 	 */
 	public function getDate(): DateTimeImmutable
 	{
-		if ($this->date === NULL) {
-			$this->date = $this->getPrototype()->setTime(0, 0, 0);
-		}
-
-		return $this->date;
+		return $this->getPrototype()->setTime(0, 0, 0);
 	}
 
 	/**

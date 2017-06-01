@@ -36,7 +36,6 @@ class MutableProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterfa
 	public function changePrototype(DateTimeImmutable $prototype): void
 	{
 		$this->prototype = $prototype;
-		$this->date = NULL;
 	}
 
 }
