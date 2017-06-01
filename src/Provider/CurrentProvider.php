@@ -10,46 +10,20 @@
 
 namespace Kdyby\DateTimeProvider\Provider;
 
-use DateInterval;
 use DateTimeImmutable;
-use DateTimeZone;
 
 class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
 {
 
+	use \Kdyby\DateTimeProvider\Provider\ProviderTrait;
 	use \Kdyby\StrictObjects\Scream;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDate(): DateTimeImmutable
-	{
-		return $this->getDateTime()->setTime(0, 0, 0);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getTime(): DateInterval
-	{
-		$now = $this->getDateTime();
-		return new DateInterval(sprintf('PT%dH%dM%dS', $now->format('G'), $now->format('i'), $now->format('s')));
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getDateTime(): DateTimeImmutable
+	public function getPrototype(): DateTimeImmutable
 	{
 		return new DateTimeImmutable();
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getTimezone(): DateTimeZone
-	{
-		return new DateTimeZone(date_default_timezone_get());
 	}
 
 }

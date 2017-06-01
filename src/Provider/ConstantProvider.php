@@ -15,8 +15,16 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 
-class ConstantProvider extends \Kdyby\DateTimeProvider\Provider\AbstractProvider
+class ConstantProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
 {
+
+	use \Kdyby\DateTimeProvider\Provider\ProviderTrait;
+	use \Kdyby\StrictObjects\Scream;
+
+	/**
+	 * @var \DateTimeImmutable
+	 */
+	private $prototype;
 
 	/**
 	 * @param string|int|\DateTimeInterface $dateTime
@@ -30,10 +38,10 @@ class ConstantProvider extends \Kdyby\DateTimeProvider\Provider\AbstractProvider
 			if (!$dateTime instanceof DateTimeImmutable) {
 				throw new \Kdyby\DateTimeProvider\InvalidArgumentException(sprintf('ConstantProvider requires DateTimeImmutable instance, but %s given', get_class($dateTime)));
 			}
-			parent::__construct($dateTime);
+			$this->prototype = $dateTime;
 
 		} elseif (is_numeric($dateTime)) {
-			parent::__construct(new DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new DateTimeZone(date_default_timezone_get())));
+			$this->prototype = new DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new DateTimeZone(date_default_timezone_get()));
 
 		} elseif (is_string($dateTime)) {
 			throw new \Kdyby\DateTimeProvider\NotImplementedException(sprintf(
@@ -47,6 +55,11 @@ class ConstantProvider extends \Kdyby\DateTimeProvider\Provider\AbstractProvider
 				is_object($dateTime) ? get_class($dateTime) : gettype($dateTime)
 			));
 		}
+	}
+
+	protected function getPrototype(): DateTimeImmutable
+	{
+		return $this->prototype;
 	}
 
 }

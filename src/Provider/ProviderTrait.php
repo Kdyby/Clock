@@ -17,27 +17,17 @@ use DateTimeZone;
 /**
  * Base implementation for DateTime-based providers.
  */
-abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterface
+trait ProviderTrait
 {
-
-	use \Kdyby\StrictObjects\Scream;
-
-	/**
-	 * @var \DateTimeImmutable
-	 */
-	protected $prototype;
 
 	/**
 	 * Cached date immutable object (time 0:00:00)
 	 *
 	 * @var \DateTimeImmutable|NULL
 	 */
-	protected $date;
+	private $date;
 
-	public function __construct(DateTimeImmutable $prototype)
-	{
-		$this->prototype = $prototype;
-	}
+	abstract protected function getPrototype(): DateTimeImmutable;
 
 	/**
 	 * {@inheritdoc}
@@ -45,7 +35,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	public function getDate(): DateTimeImmutable
 	{
 		if ($this->date === NULL) {
-			$this->date = $this->prototype->setTime(0, 0, 0);
+			$this->date = $this->getPrototype()->setTime(0, 0, 0);
 		}
 
 		return $this->date;
@@ -56,7 +46,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	 */
 	public function getTime(): DateInterval
 	{
-		return new DateInterval(sprintf('PT%dH%dM%dS', $this->prototype->format('G'), $this->prototype->format('i'), $this->prototype->format('s')));
+		return new DateInterval(sprintf('PT%dH%dM%dS', $this->getPrototype()->format('G'), $this->getPrototype()->format('i'), $this->getPrototype()->format('s')));
 	}
 
 	/**
@@ -64,7 +54,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	 */
 	public function getDateTime(): DateTimeImmutable
 	{
-		return $this->prototype;
+		return $this->getPrototype();
 	}
 
 	/**
@@ -72,7 +62,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	 */
 	public function getTimezone(): DateTimeZone
 	{
-		return $this->prototype->getTimezone();
+		return $this->getPrototype()->getTimezone();
 	}
 
 }
