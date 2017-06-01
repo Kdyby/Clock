@@ -22,7 +22,7 @@ class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterfa
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDate()
+	public function getDate(): DateTimeImmutable
 	{
 		return $this->getDateTime()->setTime(0, 0, 0);
 	}
@@ -30,7 +30,7 @@ class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterfa
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getTime()
+	public function getTime(): DateInterval
 	{
 		$now = $this->getDateTime();
 		return new DateInterval(sprintf('PT%dH%dM%dS', $now->format('G'), $now->format('i'), $now->format('s')));
@@ -39,7 +39,7 @@ class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterfa
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDateTime()
+	public function getDateTime(): DateTimeImmutable
 	{
 		return new DateTimeImmutable();
 	}
@@ -47,7 +47,7 @@ class CurrentProvider implements \Kdyby\DateTimeProvider\DateTimeProviderInterfa
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getTimezone()
+	public function getTimezone(): DateTimeZone
 	{
 		return new DateTimeZone(date_default_timezone_get());
 	}

@@ -15,7 +15,7 @@ use DateTimeImmutable;
 class MutableProvider extends \Kdyby\DateTimeProvider\Providers\AbstractProvider
 {
 
-	public function changePrototype(DateTimeImmutable $prototype)
+	public function changePrototype(DateTimeImmutable $prototype): void
 	{
 		$this->prototype = $prototype;
 		$this->date = NULL;

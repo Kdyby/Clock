@@ -12,6 +12,7 @@ namespace Kdyby\DateTimeProvider\Providers;
 
 use DateInterval;
 use DateTimeImmutable;
+use DateTimeZone;
 
 /**
  * Base implementation for DateTime-based providers.
@@ -41,7 +42,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDate()
+	public function getDate(): DateTimeImmutable
 	{
 		if ($this->date === NULL) {
 			$this->date = $this->prototype->setTime(0, 0, 0);
@@ -53,7 +54,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getTime()
+	public function getTime(): DateInterval
 	{
 		return new DateInterval(sprintf('PT%dH%dM%dS', $this->prototype->format('G'), $this->prototype->format('i'), $this->prototype->format('s')));
 	}
@@ -61,7 +62,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDateTime()
+	public function getDateTime(): DateTimeImmutable
 	{
 		return $this->prototype;
 	}
@@ -69,7 +70,7 @@ abstract class AbstractProvider implements \Kdyby\DateTimeProvider\DateTimeProvi
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getTimezone()
+	public function getTimezone(): DateTimeZone
 	{
 		return $this->prototype->getTimezone();
 	}

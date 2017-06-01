@@ -17,7 +17,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class CurrentProviderTest extends \Tester\TestCase
 {
 
-	public function testNotConstant()
+	public function testNotConstant(): void
 	{
 		$tp = new CurrentProvider();
 		$date = $tp->getDate();
@@ -34,7 +34,7 @@ class CurrentProviderTest extends \Tester\TestCase
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
-	public function testTimezones()
+	public function testTimezones(): void
 	{
 		date_default_timezone_set('Europe/Prague');
 

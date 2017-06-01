@@ -19,7 +19,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class ConstantProviderTest extends \Tester\TestCase
 {
 
-	public function testCreateFromNumeric()
+	public function testCreateFromNumeric(): void
 	{
 		$tp = new ConstantProvider(1379123601);
 		$datetime = $tp->getDateTime();
@@ -36,7 +36,7 @@ class ConstantProviderTest extends \Tester\TestCase
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
-	public function testCreateFromMutableDatetime()
+	public function testCreateFromMutableDatetime(): void
 	{
 		$tp = new ConstantProvider(new DateTime('2013-09-14 03:53:21'));
 		$datetime = $tp->getDateTime();
@@ -53,7 +53,7 @@ class ConstantProviderTest extends \Tester\TestCase
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
-	public function testCreateFromMutableDatetimeImmutable()
+	public function testCreateFromMutableDatetimeImmutable(): void
 	{
 		$tp = new ConstantProvider(new DateTimeImmutable('2013-09-14 03:53:21'));
 		$datetime = $tp->getDateTime();
@@ -70,7 +70,7 @@ class ConstantProviderTest extends \Tester\TestCase
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
-	public function testTimezones()
+	public function testTimezones(): void
 	{
 		date_default_timezone_set('Europe/Prague');
 
@@ -85,7 +85,7 @@ class ConstantProviderTest extends \Tester\TestCase
 		Assert::same('2013-09-14 02:53:21 +01:00', $tp->getDateTime()->format('Y-m-d H:i:s P'));
 	}
 
-	public function testCreateFromUnknownException()
+	public function testCreateFromUnknownException(): void
 	{
 		Assert::exception(function () {
 			new ConstantProvider('blablabla');

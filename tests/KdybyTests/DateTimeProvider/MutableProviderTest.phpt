@@ -17,7 +17,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class MutableProviderTest extends \Tester\TestCase
 {
 
-	public function testConstant()
+	public function testConstant(): void
 	{
 		$tp = new MutableProvider(new DateTimeImmutable('2013-09-14 03:53:21'));
 		$datetime = $tp->getDateTime();
@@ -33,7 +33,7 @@ class MutableProviderTest extends \Tester\TestCase
 		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
 	}
 
-	public function testTimezones()
+	public function testTimezones(): void
 	{
 		date_default_timezone_set('Europe/Prague');
 
@@ -48,7 +48,7 @@ class MutableProviderTest extends \Tester\TestCase
 		Assert::same('2013-09-14 02:53:21 +01:00', $tp->getDateTime()->format('Y-m-d H:i:s P'));
 	}
 
-	public function testChangePrototype()
+	public function testChangePrototype(): void
 	{
 		$tp = new MutableProvider($originalTime = new DateTimeImmutable('2013-09-14 03:53:21'));
 		Assert::same($originalTime, $tp->getDateTime());
