@@ -6,6 +6,8 @@
  * @testCase KdybyTests\DateTimeProvider\ConstantProviderTest
  */
 
+declare(strict_types = 1);
+
 namespace KdybyTests\DateTimeProvider;
 
 use DateTime;

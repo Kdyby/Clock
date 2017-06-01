@@ -6,6 +6,8 @@
  * @testCase KdybyTests\DateTimeProvider\CurrentProviderTest
  */
 
+declare(strict_types = 1);
+
 namespace KdybyTests\DateTimeProvider;
 
 use DateTimeImmutable;
