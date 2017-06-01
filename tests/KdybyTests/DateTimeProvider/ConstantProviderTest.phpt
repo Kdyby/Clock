@@ -23,14 +23,14 @@ class ConstantProviderTest extends \Tester\TestCase
 		$datetime = $tp->getDateTime();
 		$date = $tp->getDate();
 		$time = $tp->getTime();
-		$timezone = $tp->getTimezone();
+		$timezone = $tp->getTimeZone();
 
 		sleep(2);
 
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date->getTimestamp(), $tp->getDate()->getTimestamp());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
-		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
+		Assert::same($timezone->getName(), $tp->getTimeZone()->getName());
 	}
 
 }

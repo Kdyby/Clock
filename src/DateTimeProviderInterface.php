@@ -23,6 +23,6 @@ interface DateTimeProviderInterface
 
 	public function getDateTime(): DateTimeImmutable;
 
-	public function getTimezone(): DateTimeZone;
+	public function getTimeZone(): DateTimeZone;
 
 }

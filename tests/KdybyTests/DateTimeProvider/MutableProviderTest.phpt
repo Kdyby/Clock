@@ -23,14 +23,14 @@ class MutableProviderTest extends \Tester\TestCase
 		$datetime = $tp->getDateTime();
 		$date = $tp->getDate();
 		$time = $tp->getTime();
-		$timezone = $tp->getTimezone();
+		$timezone = $tp->getTimeZone();
 
 		sleep(2);
 
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date->getTimestamp(), $tp->getDate()->getTimestamp());
 		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
-		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
+		Assert::same($timezone->getName(), $tp->getTimeZone()->getName());
 	}
 
 	public function testTimezones(): void
@@ -38,13 +38,13 @@ class MutableProviderTest extends \Tester\TestCase
 		date_default_timezone_set('Europe/Prague');
 
 		$tp = new MutableProvider(new DateTimeImmutable(date('Y-m-d H:i:s', 1379123601)));
-		Assert::same('Europe/Prague', $tp->getTimezone()->getName());
+		Assert::same('Europe/Prague', $tp->getTimeZone()->getName());
 		Assert::same('2013-09-14 03:53:21 +02:00', $tp->getDateTime()->format('Y-m-d H:i:s P'));
 
 		date_default_timezone_set('Europe/London');
 
 		$tp = new MutableProvider(new DateTimeImmutable(date('Y-m-d H:i:s', 1379123601)));
-		Assert::same('Europe/London', $tp->getTimezone()->getName());
+		Assert::same('Europe/London', $tp->getTimeZone()->getName());
 		Assert::same('2013-09-14 02:53:21 +01:00', $tp->getDateTime()->format('Y-m-d H:i:s P'));
 	}
 

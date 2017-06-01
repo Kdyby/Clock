@@ -23,7 +23,7 @@ class CurrentProviderTest extends \Tester\TestCase
 		$date = $tp->getDate();
 		$datetime = $tp->getDateTime();
 		$time = $tp->getTime();
-		$timezone = $tp->getTimezone();
+		$timezone = $tp->getTimeZone();
 
 		sleep(2);
 
@@ -31,7 +31,7 @@ class CurrentProviderTest extends \Tester\TestCase
 		Assert::same('00:00:00', $date->format('H:i:s'));
 		Assert::notEqual($datetime, $tp->getDateTime());
 		Assert::notEqual($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
-		Assert::same($timezone->getName(), $tp->getTimezone()->getName());
+		Assert::same($timezone->getName(), $tp->getTimeZone()->getName());
 	}
 
 	public function testTimezones(): void
@@ -39,12 +39,12 @@ class CurrentProviderTest extends \Tester\TestCase
 		date_default_timezone_set('Europe/Prague');
 
 		$tp = new CurrentProvider();
-		Assert::same('Europe/Prague', $tp->getTimezone()->getName());
+		Assert::same('Europe/Prague', $tp->getTimeZone()->getName());
 
 		date_default_timezone_set('Europe/London');
 
 		$tp = new CurrentProvider();
-		Assert::same('Europe/London', $tp->getTimezone()->getName());
+		Assert::same('Europe/London', $tp->getTimeZone()->getName());
 	}
 
 }

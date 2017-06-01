@@ -23,7 +23,7 @@ trait ImmutableProviderTrait
 	use \Kdyby\DateTimeProvider\Provider\ProviderTrait {
 		getDate as getDateVolatile;
 		getTime as getTimeVolatile;
-		getTimezone as getTimezoneVolatile;
+		getTimeZone as getTimeZoneVolatile;
 		getPrototype as getDateTime;
 	}
 
@@ -72,10 +72,10 @@ trait ImmutableProviderTrait
 		return new DateInterval(sprintf('PT%dH%dM%dS', $this->time->h, $this->time->i, $this->time->s));
 	}
 
-	public function getTimezone(): DateTimeZone
+	public function getTimeZone(): DateTimeZone
 	{
 		if ($this->timezone === NULL) {
-			$this->timezone = $this->getTimezoneVolatile();
+			$this->timezone = $this->getTimeZoneVolatile();
 		}
 
 		return $this->timezone;
