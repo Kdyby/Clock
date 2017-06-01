@@ -10,7 +10,7 @@ namespace KdybyTests\DateTimeProvider;
 
 use DateTime;
 use DateTimeImmutable;
-use Kdyby\DateTimeProvider\Providers\ConstantProvider;
+use Kdyby\DateTimeProvider\Provider\ConstantProvider;
 use Tester\Assert;
 use stdClass;
 

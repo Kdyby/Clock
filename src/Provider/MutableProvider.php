@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace Kdyby\DateTimeProvider\Providers;
+namespace Kdyby\DateTimeProvider\Provider;
 
 use DateTimeImmutable;
 
-class MutableProvider extends \Kdyby\DateTimeProvider\Providers\AbstractProvider
+class MutableProvider extends \Kdyby\DateTimeProvider\Provider\AbstractProvider
 {
 
 	public function changePrototype(DateTimeImmutable $prototype): void

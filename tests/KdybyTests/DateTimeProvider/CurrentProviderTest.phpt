@@ -9,7 +9,7 @@
 namespace KdybyTests\DateTimeProvider;
 
 use DateTimeImmutable;
-use Kdyby\DateTimeProvider\Providers\CurrentProvider;
+use Kdyby\DateTimeProvider\Provider\CurrentProvider;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';

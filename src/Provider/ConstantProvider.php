@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace Kdyby\DateTimeProvider\Providers;
+namespace Kdyby\DateTimeProvider\Provider;
 
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 
-class ConstantProvider extends \Kdyby\DateTimeProvider\Providers\AbstractProvider
+class ConstantProvider extends \Kdyby\DateTimeProvider\Provider\AbstractProvider
 {
 
 	/**
