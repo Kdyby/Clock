@@ -71,7 +71,10 @@ trait ImmutableProviderTrait
 			return clone $this->time;
 		}
 
-		return new DateInterval(sprintf('PT%dH%dM%dS', $this->time->h, $this->time->i, $this->time->s));
+		$interval = new DateInterval(sprintf('PT%dH%dM%dS', $this->time->h, $this->time->i, $this->time->s));
+		$interval->f = $this->time->f;
+
+		return $interval;
 	}
 
 	public function getTimeZone(): DateTimeZone

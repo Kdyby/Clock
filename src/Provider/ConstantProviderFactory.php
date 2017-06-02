@@ -40,7 +40,7 @@ class ConstantProviderFactory
 			return new ConstantProvider($dateTime);
 
 		} elseif (is_numeric($dateTime)) {
-			return new ConstantProvider(new DateTimeImmutable(date('Y-m-d H:i:s', $dateTime), new DateTimeZone(date_default_timezone_get())));
+			return new ConstantProvider((new DateTimeImmutable(sprintf('@%.6f', $dateTime)))->setTimezone(new DateTimeZone(date_default_timezone_get())));
 
 		} elseif (is_string($dateTime)) {
 			throw new \Kdyby\DateTimeProvider\NotImplementedException(sprintf(

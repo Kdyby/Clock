@@ -31,7 +31,7 @@ class MutableProviderTest extends \Tester\TestCase
 
 		Assert::same($datetime, $tp->getDateTime());
 		Assert::same($date->getTimestamp(), $tp->getDate()->getTimestamp());
-		Assert::same($time->format('%h:%i:%s'), $tp->getTime()->format('%h:%i:%s'));
+		Assert::same($time->format('%h:%i:%s.%f'), $tp->getTime()->format('%h:%i:%s.%f'));
 		Assert::same($timezone->getName(), $tp->getTimeZone()->getName());
 	}
 
@@ -58,6 +58,22 @@ class MutableProviderTest extends \Tester\TestCase
 		$tp->changePrototype($changedTime = new DateTimeImmutable('2015-01-09 18:34:00'));
 		Assert::notEqual($originalTime, $tp->getDateTime());
 		Assert::same($changedTime, $tp->getDateTime());
+	}
+
+	public function testMicroseconds(): void
+	{
+		$tp = new MutableProvider(new DateTimeImmutable('2013-09-14 03:53:21.123456'));
+		$datetime = $tp->getDateTime();
+		$date = $tp->getDate();
+		$time = $tp->getTime();
+		$timezone = $tp->getTimeZone();
+
+		usleep(100);
+
+		Assert::same($datetime, $tp->getDateTime());
+		Assert::same($date->getTimestamp(), $tp->getDate()->getTimestamp());
+		Assert::same($time->format('%h:%i:%s.%f'), $tp->getTime()->format('%h:%i:%s.%f'));
+		Assert::same($timezone->getName(), $tp->getTimeZone()->getName());
 	}
 
 }

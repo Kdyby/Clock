@@ -29,7 +29,7 @@ trait ProviderTrait
 	 */
 	public function getDate(): DateTimeImmutable
 	{
-		return $this->getPrototype()->setTime(0, 0, 0);
+		return $this->getPrototype()->setTime(0, 0, 0, 0);
 	}
 
 	/**
@@ -37,7 +37,10 @@ trait ProviderTrait
 	 */
 	public function getTime(): DateInterval
 	{
-		return new DateInterval(sprintf('PT%dH%dM%dS', $this->getPrototype()->format('G'), $this->getPrototype()->format('i'), $this->getPrototype()->format('s')));
+		$interval = new DateInterval(sprintf('PT%dH%dM%dS', $this->getPrototype()->format('G'), $this->getPrototype()->format('i'), $this->getPrototype()->format('s')));
+		$interval->f = $this->getPrototype()->format('u');
+
+		return $interval;
 	}
 
 	/**
