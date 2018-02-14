@@ -4,7 +4,7 @@
 	"description": "Time provider, providing consistent current date, time, datetime and timezone across the request.",
 	"keywords": ["nette", "kdyby", "date", "time"],
 	"homepage": "http://kdyby.org",
-	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"license": ["BSD-3-Clause", "GPL-2.0-only", "GPL-3.0-only"],
 	"authors": [
 		{
 			"name": "Michael Moravec"
