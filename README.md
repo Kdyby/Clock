@@ -6,6 +6,9 @@ Kdyby/Clock
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/clock.svg)](https://packagist.org/packages/kdyby/clock)
 [![Coverage Status](https://coveralls.io/repos/github/Kdyby/Clock/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Clock?branch=master)
 
+
+**This package is abandoned and no longer maintained. The author suggests using the [Kdyby/DateTimeProvider](https://packagist.org/packages/kdyby/datetime-provider) package instead.**
+
 Installation
 ------------
 
